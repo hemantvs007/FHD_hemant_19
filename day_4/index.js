@@ -1,0 +1,33 @@
+let products = []
+const showProducts = async () => {
+    const res = await fetch("https://dummyjson.com/products");
+    const data = await res.json();
+    products = data.products;
+    console.log(products); 
+    
+    products.map((product)=>{
+        console.log(product);
+        const div = document.createElement("div");
+
+        const img = document.createElement("img");
+        img.src = product.thumbnail;
+        img.alt = "product-img-here";
+
+        const title = document.createElement("h1");
+        title.innerText = product.title;
+
+        const price = document.createElement("h2");
+        price.innerText = product.price;
+
+        const incrementBtn = document.createElement("button");
+        incrementBtn.innerText = "+";
+
+        const decrementBtn = document.createElement("button");
+        decrementBtn.innerText = "-";
+
+        const span = document.createElement("span");
+        span.innerText = "ADD";
+
+    })
+}
+showProducts();
